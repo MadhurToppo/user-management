@@ -1,6 +1,7 @@
-package com.madhurtoppo.userservice.entities;
+package com.madhurtoppo.userservice.domains;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class User {
 
-  private Long id;
+  @Id private Long id;
   private String name;
   private String email;
   private String password;
