@@ -1,11 +1,11 @@
 package com.madhurtoppo.userservice.services;
 
-import com.madhurtoppo.userservice.domains.User;
+import com.madhurtoppo.userservice.domains.dtos.UserDto;
 
 /** UserService */
 public interface UserService {
 
-  public User createUser(User user);
+  public Long createUser(UserDto userDto);
 
-  public User getUser(long id);
+  public UserDto getUser(long id);
 }

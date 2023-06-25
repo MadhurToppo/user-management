@@ -1,30 +1,32 @@
 package com.madhurtoppo.userservice.services;
 
 import com.madhurtoppo.userservice.domains.User;
+import com.madhurtoppo.userservice.domains.dtos.Mapper;
+import com.madhurtoppo.userservice.domains.dtos.UserDto;
 import com.madhurtoppo.userservice.repositories.UserRepository;
-import java.util.Optional;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /** UserServiceImpl */
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private UserRepository userRepository;
+  @Autowired
+  private UserRepository repository;
+  @Autowired
+  private Mapper mapper;
 
   @Override
-  public User createUser(final User user) {
-    return user;
+  public Long createUser(final UserDto userDto) {
+    final User entity = mapper.toEntity(userDto);
+    final User user = repository.save(entity);
+    return user.getId();
   }
 
   @Override
-  public User getUser(final long id) {
-    final Optional<User> user = userRepository.findById(id);
-    if (user.isPresent()) {
-      return user.get();
-    }
-    throw new RuntimeException("User Not found");
-    // return userRepository.findById(id).orElse(throw new RuntimeException("Not"));
+  public UserDto getUser(final long id) {
+    final User user = this.repository.findById(id).get();
+    final UserDto userDto = mapper.toDto(user);
+    return userDto;
   }
 }
