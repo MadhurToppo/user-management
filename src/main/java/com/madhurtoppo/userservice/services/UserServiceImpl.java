@@ -4,17 +4,16 @@ import com.madhurtoppo.userservice.domains.User;
 import com.madhurtoppo.userservice.domains.dtos.Mapper;
 import com.madhurtoppo.userservice.domains.dtos.UserDto;
 import com.madhurtoppo.userservice.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /** UserServiceImpl */
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  private UserRepository repository;
-  @Autowired
-  private Mapper mapper;
+  private final UserRepository repository;
+  private final Mapper mapper;
 
   @Override
   public Long createUser(final UserDto userDto) {
