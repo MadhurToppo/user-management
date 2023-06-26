@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         repository
             .findById(id)
             .orElseThrow(
-                () -> new UserNotFoundException("User with id %d does not exists".formatted(id)));
+                () -> new UserNotFoundException("User with id '%d' does not exists".formatted(id)));
     return mapper.toDto(user);
   }
 }
