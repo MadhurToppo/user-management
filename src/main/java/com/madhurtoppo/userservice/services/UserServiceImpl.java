@@ -3,6 +3,7 @@ package com.madhurtoppo.userservice.services;
 import com.madhurtoppo.userservice.domains.User;
 import com.madhurtoppo.userservice.domains.dtos.Mapper;
 import com.madhurtoppo.userservice.domains.dtos.UserDto;
+import com.madhurtoppo.userservice.exceptions.UserAlreadyExistsException;
 import com.madhurtoppo.userservice.exceptions.UserNotFoundException;
 import com.madhurtoppo.userservice.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,10 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public Long createUser(final UserDto userDto) {
+    if (repository.existsByNameContainingIgnoreCase(userDto.getName())) {
+      throw new UserAlreadyExistsException(
+          "User with name '%s' already exists".formatted(userDto.getName()));
+    }
     final User user = mapper.toEntity(userDto);
     return repository.save(user).getId();
   }

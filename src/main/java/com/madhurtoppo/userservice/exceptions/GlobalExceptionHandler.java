@@ -17,6 +17,12 @@ public class GlobalExceptionHandler {
     return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
   }
 
+  @ExceptionHandler(UserAlreadyExistsException.class)
+  public ResponseEntity<Error> userAlreadyExists(UserAlreadyExistsException e, WebRequest r) {
+    Error error = new Error(e.getMessage(), r.getDescription(false), new Date());
+    return new ResponseEntity<Error>(error, HttpStatus.OK);
+  }
+
   @ExceptionHandler(Exception.class)
   public ResponseEntity<Error> globalExceptions(Exception exception, WebRequest request) {
     Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
