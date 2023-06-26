@@ -12,10 +12,7 @@ public class Mapper {
    * @return {@link UserDto}
    */
   public UserDto toDto(final User user) {
-    final String name = user.getName();
-    final int age = user.getAge();
-    final String city = user.getCity();
-    return new UserDto(name, age, city);
+    return new UserDto(user.getName(), user.getAge(), user.getCity());
   }
 
   /**
@@ -23,9 +20,6 @@ public class Mapper {
    * @return {@link User}
    */
   public User toEntity(final UserDto userDto) {
-    final String name = userDto.getName();
-    final int age = userDto.getAge();
-    final String city = userDto.getCity();
-    return new User(name, age, city);
+    return new User(userDto.getName(), userDto.getAge(), userDto.getCity());
   }
 }
