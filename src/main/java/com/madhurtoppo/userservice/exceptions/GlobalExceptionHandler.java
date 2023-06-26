@@ -12,8 +12,8 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobalExceptionHandler {
 
   @ExceptionHandler(UserNotFoundException.class)
-  public ResponseEntity<Error> userNotFound(UserNotFoundException exception, WebRequest request) {
-    Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+  public ResponseEntity<Error> userNotFound(UserNotFoundException e, WebRequest r) {
+    Error error = new Error(e.getMessage(), r.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
   }
 
@@ -24,8 +24,8 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(Exception.class)
-  public ResponseEntity<Error> globalExceptions(Exception exception, WebRequest request) {
-    Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+  public ResponseEntity<Error> globalExceptions(Exception e, WebRequest r) {
+    Error error = new Error(e.getMessage(), r.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }
