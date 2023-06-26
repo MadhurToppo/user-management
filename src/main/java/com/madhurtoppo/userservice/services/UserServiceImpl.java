@@ -19,8 +19,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public Long createUser(final UserDto userDto) {
     final User user = mapper.toEntity(userDto);
-    final User savedUser = repository.save(user);
-    return savedUser.getId();
+    return repository.save(user).getId();
   }
 
   @Override
