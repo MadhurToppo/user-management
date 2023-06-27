@@ -20,20 +20,17 @@ public class UserServiceImpl implements UserService {
   @Override
   public Long createUser(final UserDto userDto) {
     if (repository.existsByNameContainingIgnoreCase(userDto.getName())) {
-      throw new UserAlreadyExistsException(
-          "User with name '%s' already exists".formatted(userDto.getName()));
+      throw new UserAlreadyExistsException(userDto.getName());
     }
     final User user = mapper.toEntity(userDto);
-    return repository.save(user).getId();
+    final User savedUser = repository.save(user);
+    return savedUser.getId();
   }
 
   @Override
   public UserDto getUser(final long id) {
-    final User user =
-        repository
-            .findById(id)
-            .orElseThrow(
-                () -> new UserNotFoundException("User with id '%d' does not exists".formatted(id)));
-    return mapper.toDto(user);
+    final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    final UserDto userDto = mapper.toDto(user);
+    return userDto;
   }
 }
