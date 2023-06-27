@@ -18,7 +18,9 @@ curl -X POST \
 http://localhost:8080/api/users \
 -H 'Cache-Control: no-cache' \
 -H 'Content-Type: application/json' \
--d '{"name":"User number 1","age":34, "city": "Mumbai"}' | json_pp
+-d '{"name":"User number 1","age":34, "city": "Mumbai"}' \
+| json_pp | pygmentize -l json
+
 ```
 
 ### Get a User by Id
