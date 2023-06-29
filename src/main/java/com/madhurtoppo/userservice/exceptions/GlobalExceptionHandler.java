@@ -37,6 +37,14 @@ public class GlobalExceptionHandler {
     return new ResponseEntity<Error>(error, HttpStatus.OK);
   }
 
+  @ExceptionHandler(InvalidArgumentException.class)
+  public ResponseEntity<Error> invalidArguments(
+      final InvalidArgumentException exception, final WebRequest request) {
+
+    final Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+    return new ResponseEntity<Error>(error, HttpStatus.BAD_REQUEST);
+  }
+
   /**
    * @param exception
    * @param request
