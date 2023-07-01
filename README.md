@@ -39,7 +39,7 @@ curl --verbose --request GET 'http://localhost:8080/api/users' \
 ### Update a User
 
 ```sh
- curl --verbose --request PUT 'http://localhost:8080/api/users/1' \
+curl --verbose --request PUT 'http://localhost:8080/api/users/1' \
 --header 'Content-Type: application/json' \
 --data '{"name":"User number 36","age":24, "city": "Rourkela"}'
 ```
