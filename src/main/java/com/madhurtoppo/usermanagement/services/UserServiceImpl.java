@@ -1,13 +1,13 @@
-package com.madhurtoppo.userservice.services;
+package com.madhurtoppo.usermanagement.services;
 
-import com.madhurtoppo.userservice.domains.User;
-import com.madhurtoppo.userservice.domains.dtos.Mapper;
-import com.madhurtoppo.userservice.domains.dtos.UserDto;
-import com.madhurtoppo.userservice.domains.dtos.UsersDto;
-import com.madhurtoppo.userservice.exceptions.InvalidArgumentException;
-import com.madhurtoppo.userservice.exceptions.UserAlreadyExistsException;
-import com.madhurtoppo.userservice.exceptions.UserNotFoundException;
-import com.madhurtoppo.userservice.repositories.UserRepository;
+import com.madhurtoppo.usermanagement.dtos.Mapper;
+import com.madhurtoppo.usermanagement.dtos.UserDto;
+import com.madhurtoppo.usermanagement.dtos.UsersDto;
+import com.madhurtoppo.usermanagement.exceptions.InvalidArgumentException;
+import com.madhurtoppo.usermanagement.exceptions.UserAlreadyExistsException;
+import com.madhurtoppo.usermanagement.exceptions.UserNotFoundException;
+import com.madhurtoppo.usermanagement.model.User;
+import com.madhurtoppo.usermanagement.repository.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

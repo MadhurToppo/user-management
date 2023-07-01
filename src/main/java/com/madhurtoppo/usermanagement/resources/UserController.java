@@ -1,9 +1,8 @@
-package com.madhurtoppo.userservice.controllers;
+package com.madhurtoppo.usermanagement.resources;
 
-import com.madhurtoppo.userservice.domains.User;
-import com.madhurtoppo.userservice.domains.dtos.UserDto;
-import com.madhurtoppo.userservice.domains.dtos.UsersDto;
-import com.madhurtoppo.userservice.services.UserServiceImpl;
+import com.madhurtoppo.usermanagement.dtos.UserDto;
+import com.madhurtoppo.usermanagement.dtos.UsersDto;
+import com.madhurtoppo.usermanagement.services.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,8 @@
-package com.madhurtoppo.userservice.repositories;
+package com.madhurtoppo.usermanagement.repository;
 
-import com.madhurtoppo.userservice.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.madhurtoppo.usermanagement.model.User;
 
 /** UserRepository */
 public interface UserRepository extends JpaRepository<User, Long> {

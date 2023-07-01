@@ -1,4 +1,4 @@
-package com.madhurtoppo.userservice.exceptions;
+package com.madhurtoppo.usermanagement.exceptions;
 
 import java.util.Date;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
-package com.madhurtoppo.userservice.services;
+package com.madhurtoppo.usermanagement.services;
 
-import com.madhurtoppo.userservice.domains.dtos.UserDto;
-import com.madhurtoppo.userservice.domains.dtos.UsersDto;
+import com.madhurtoppo.usermanagement.dtos.UserDto;
+import com.madhurtoppo.usermanagement.dtos.UsersDto;
 
 /** UserService */
 public interface UserService {

@@ -1,4 +1,4 @@
-package com.madhurtoppo.userservice.domains;
+package com.madhurtoppo.usermanagement.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +21,11 @@ public class User {
   private int age;
   private String city;
 
+  /**
+   * @param name
+   * @param age
+   * @param city
+   */
   public User(final String name, final int age, final String city) {
     this.name = name;
     this.age = age;

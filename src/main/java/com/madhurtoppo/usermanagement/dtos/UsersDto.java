@@ -1,4 +1,4 @@
-package com.madhurtoppo.userservice.domains.dtos;
+package com.madhurtoppo.usermanagement.dtos;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
