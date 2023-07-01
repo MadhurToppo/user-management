@@ -16,24 +16,22 @@ gradle bootRun
 ```sh
 curl --verbose --request POST http://localhost:8080/api/users \
 --header 'Content-Type: application/json' \
--d '{"name":"Number 1","age":34, "city": "Mumbai"}' \
-| json_pp | pygmentize -l json
+--data '{"name":"Number 1","age":34, "city": "Mumbai"}' \
+| pygmentize -l json
 ```
 
 ### Get a User by Id
 
 ```sh
 curl --verbose --request GET http://localhost:8080/api/users/1 \
-| json_pp | pygmentize -l json
+| pygmentize -l json
 ```
 
 ### Get all Users
 
 ```sh
 curl --verbose --request GET 'http://localhost:8080/api/users' \
---header 'Content-Type: application/json' \
---data '{"name":"User number 36","age":24, "city": "Rourkela"}' \
-| json_pp | pygmentize -l json
+| pygmentize -l json
 ```
 
 ### Update a User
@@ -42,11 +40,12 @@ curl --verbose --request GET 'http://localhost:8080/api/users' \
 curl --verbose --request PUT 'http://localhost:8080/api/users/1' \
 --header 'Content-Type: application/json' \
 --data '{"name":"User number 36","age":24, "city": "Rourkela"}'
+| pygmentize -l json
 ```
 
 ### Delete a User
 
 ```sh
-curl --verbose --request DELETE 'http://localhost:8080/api/users/1' \
---header 'Content-Type: application/json'
+curl --verbose --request DELETE 'http://localhost:8081/api/users/1' \
+| pygmentize -l json
 ```
