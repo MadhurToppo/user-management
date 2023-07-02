@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public String delete(long id) {
+  public String delete(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     repository.delete(user);
     return "Successfully deleted";
