@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public Long createUser(final UserDto userDto) {
-    if (repository.existsByNameContainingIgnoreCase(userDto.getName())) {
-      throw new UserAlreadyExistsException(userDto.getName());
+    if (repository.existsByNameContainingIgnoreCase(userDto.name())) {
+      throw new UserAlreadyExistsException(userDto.name());
     }
     final User user = mapper.toEntity(userDto);
     final User savedUser = repository.save(user);
@@ -46,13 +46,13 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public String update(final UserDto userDto, final long id) {
-    if (userDto.getName() == null || userDto.getAge() < 0 || userDto.getCity() == null) {
+    if (userDto.name() == null || userDto.age() < 0 || userDto.city() == null) {
       throw new InvalidArgumentException();
     }
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
-    user.setName(userDto.getName());
-    user.setAge(userDto.getAge());
-    user.setCity(userDto.getCity());
+    user.setName(userDto.name());
+    user.setAge(userDto.age());
+    user.setCity(userDto.city());
     repository.save(user);
     return "Successfully updated.";
   }

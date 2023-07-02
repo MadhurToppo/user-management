@@ -20,6 +20,6 @@ public class Mapper {
    * @return {@link User}
    */
   public User toEntity(final UserDto userDto) {
-    return new User(userDto.getName(), userDto.getAge(), userDto.getCity());
+    return new User(userDto.name(), userDto.age(), userDto.city());
   }
 }
