@@ -3,6 +3,7 @@ package com.madhurtoppo.usermanagement.services;
 import com.madhurtoppo.usermanagement.dtos.Mapper;
 import com.madhurtoppo.usermanagement.dtos.UserDto;
 import com.madhurtoppo.usermanagement.dtos.UsersDto;
+import com.madhurtoppo.usermanagement.entities.ApiResponse;
 import com.madhurtoppo.usermanagement.entities.User;
 import com.madhurtoppo.usermanagement.exceptions.InvalidArgumentException;
 import com.madhurtoppo.usermanagement.exceptions.UserAlreadyExistsException;
@@ -21,14 +22,20 @@ public class UserServiceImpl implements UserService {
   private final Mapper mapper;
 
   @Override
-  public Long createUser(final UserDto userDto) {
+  public ApiResponse createUser(final UserDto userDto) {
     if (repository.existsByNameContainingIgnoreCase(userDto.name())) {
       throw new UserAlreadyExistsException(userDto.name());
     }
     final User user = mapper.toEntity(userDto);
     final User savedUser = repository.save(user);
-    return savedUser.getId();
+    return new ApiResponse(true, "Successfully Added", savedUser);
   }
+
+  // private ApiResponse createResponse(final boolean status, final String
+  // message, final User data)
+  // {
+  // return new ApiResponse(status, message, data);
+  // }
 
   @Override
   public UserDto getUser(final long id) {

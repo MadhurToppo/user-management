@@ -2,6 +2,7 @@ package com.madhurtoppo.usermanagement.resources;
 
 import com.madhurtoppo.usermanagement.dtos.UserDto;
 import com.madhurtoppo.usermanagement.dtos.UsersDto;
+import com.madhurtoppo.usermanagement.entities.ApiResponse;
 import com.madhurtoppo.usermanagement.services.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,10 @@ public class UserController {
    * @return id of {@link User}
    */
   @PostMapping
-  public ResponseEntity<Long> createUser(@RequestBody final UserDto userDto) {
-    final long id = userService.createUser(userDto);
-    return new ResponseEntity<Long>(id, HttpStatus.CREATED);
+  public ResponseEntity<ApiResponse> createUser(@RequestBody final UserDto userDto) {
+    // final long id = userService.createUser(userDto);
+    final ApiResponse response = userService.createUser(userDto);
+    return new ResponseEntity<ApiResponse>(response, HttpStatus.CREATED);
   }
 
   /**
