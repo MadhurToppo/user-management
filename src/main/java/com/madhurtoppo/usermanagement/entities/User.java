@@ -1,4 +1,4 @@
-package com.madhurtoppo.usermanagement.model;
+package com.madhurtoppo.usermanagement.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

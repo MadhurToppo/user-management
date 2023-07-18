@@ -1,6 +1,6 @@
 package com.madhurtoppo.usermanagement.dtos;
 
-import com.madhurtoppo.usermanagement.model.User;
+import com.madhurtoppo.usermanagement.entities.User;
 import org.springframework.stereotype.Component;
 
 /** Mapper */
