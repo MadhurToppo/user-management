@@ -1,17 +1,18 @@
 package com.madhurtoppo.usermanagement.services;
 
 import com.madhurtoppo.usermanagement.dtos.UserDto;
-import com.madhurtoppo.usermanagement.entities.ApiResponse;
+import com.madhurtoppo.usermanagement.dtos.UserIdDto;
+import com.madhurtoppo.usermanagement.dtos.UsersDto;
 
 /** UserService */
 public interface UserService {
-  public ApiResponse createUser(UserDto userDto);
+  public UserIdDto createUser(UserDto userDto);
 
-  public ApiResponse getUser(long id);
+  public UserDto getUser(long id);
 
-  public ApiResponse getAllUsers();
+  public UsersDto getAllUsers();
 
-  public ApiResponse update(UserDto userDto, long id);
+  public void update(UserDto userDto, long id);
 
-  public ApiResponse delete(long id);
+  public void delete(long id);
 }

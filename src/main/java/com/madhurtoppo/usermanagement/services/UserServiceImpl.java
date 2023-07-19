@@ -4,7 +4,6 @@ import com.madhurtoppo.usermanagement.dtos.Mapper;
 import com.madhurtoppo.usermanagement.dtos.UserDto;
 import com.madhurtoppo.usermanagement.dtos.UserIdDto;
 import com.madhurtoppo.usermanagement.dtos.UsersDto;
-import com.madhurtoppo.usermanagement.entities.ApiResponse;
 import com.madhurtoppo.usermanagement.entities.User;
 import com.madhurtoppo.usermanagement.exceptions.InvalidArgumentException;
 import com.madhurtoppo.usermanagement.exceptions.UserAlreadyExistsException;
@@ -23,31 +22,31 @@ public class UserServiceImpl implements UserService {
   private final Mapper mapper;
 
   @Override
-  public ApiResponse createUser(final UserDto userDto) {
+  public UserIdDto createUser(final UserDto userDto) {
     if (repository.existsByNameContainingIgnoreCase(userDto.name())) {
       throw new UserAlreadyExistsException(userDto.name());
     }
     final User user = mapper.toEntity(userDto);
     final User savedUser = repository.save(user);
-    return new ApiResponse(true, "User successfully Added", new UserIdDto(savedUser.getId()));
+    return new UserIdDto(savedUser.getId());
   }
 
   @Override
-  public ApiResponse getUser(final long id) {
+  public UserDto getUser(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     final UserDto userDto = mapper.toDto(user);
-    return new ApiResponse(true, "User found", userDto);
+    return userDto;
   }
 
   @Override
-  public ApiResponse getAllUsers() {
+  public UsersDto getAllUsers() {
     final List<UserDto> users = repository.findAll().stream().map(user -> mapper.toDto(user)).toList();
     final UsersDto usersDto = new UsersDto(users);
-    return new ApiResponse(true, "All users found", usersDto);
+    return usersDto;
   }
 
   @Override
-  public ApiResponse update(final UserDto userDto, final long id) {
+  public void update(final UserDto userDto, final long id) {
     if (userDto.name() == null || userDto.age() < 0 || userDto.city() == null) {
       throw new InvalidArgumentException();
     }
@@ -56,13 +55,11 @@ public class UserServiceImpl implements UserService {
     user.setAge(userDto.age());
     user.setCity(userDto.city());
     repository.save(user);
-    return new ApiResponse(true, "User successfully updated");
   }
 
   @Override
-  public ApiResponse delete(final long id) {
+  public void delete(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     repository.delete(user);
-    return new ApiResponse(true, "User successfully deleted");
   }
 }
