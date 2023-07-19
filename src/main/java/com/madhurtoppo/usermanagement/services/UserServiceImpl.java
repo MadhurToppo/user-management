@@ -28,20 +28,13 @@ public class UserServiceImpl implements UserService {
     }
     final User user = mapper.toEntity(userDto);
     final User savedUser = repository.save(user);
-    return new ApiResponse(true, "Successfully Added", savedUser);
+    return new ApiResponse(true, "User successfully Added", savedUser);
   }
 
-  // private ApiResponse createResponse(final boolean status, final String
-  // message, final User data)
-  // {
-  // return new ApiResponse(status, message, data);
-  // }
-
   @Override
-  public UserDto getUser(final long id) {
+  public ApiResponse getUser(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
-    final UserDto userDto = mapper.toDto(user);
-    return userDto;
+    return new ApiResponse(true, "User found", user);
   }
 
   @Override

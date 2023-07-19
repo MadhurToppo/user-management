@@ -30,7 +30,6 @@ public class UserController {
    */
   @PostMapping
   public ResponseEntity<ApiResponse> createUser(@RequestBody final UserDto userDto) {
-    // final long id = userService.createUser(userDto);
     final ApiResponse response = userService.createUser(userDto);
     return new ResponseEntity<ApiResponse>(response, HttpStatus.CREATED);
   }
@@ -49,9 +48,9 @@ public class UserController {
    * @return {@link UserDto}
    */
   @GetMapping("/{id}")
-  public ResponseEntity<UserDto> getUser(@PathVariable final Long id) {
-    final UserDto userDto = userService.getUser(id);
-    return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
+  public ResponseEntity<ApiResponse> getUser(@PathVariable final Long id) {
+    final ApiResponse response = userService.getUser(id);
+    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
   }
 
   /**

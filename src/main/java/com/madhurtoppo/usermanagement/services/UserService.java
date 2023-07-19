@@ -8,7 +8,7 @@ import com.madhurtoppo.usermanagement.entities.ApiResponse;
 public interface UserService {
   public ApiResponse createUser(UserDto userDto);
 
-  public UserDto getUser(long id);
+  public ApiResponse getUser(long id);
 
   public UsersDto getAllUsers();
 
