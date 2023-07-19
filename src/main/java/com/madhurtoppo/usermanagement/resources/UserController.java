@@ -59,11 +59,11 @@ public class UserController {
    * @return
    */
   @PutMapping("/{id}")
-  public ResponseEntity<String> update(
+  public ResponseEntity<ApiResponse> update(
       @RequestBody final UserDto userDto, @PathVariable final long id) {
 
-    final String message = userService.update(userDto, id);
-    return new ResponseEntity<String>(message, HttpStatus.OK);
+    final ApiResponse response = userService.update(userDto, id);
+    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
   }
 
   /**
@@ -71,8 +71,8 @@ public class UserController {
    * @return
    */
   @DeleteMapping("/{id}")
-  public ResponseEntity<String> delete(@PathVariable final long id) {
-    final String message = userService.delete(id);
-    return new ResponseEntity<String>(message, HttpStatus.OK);
+  public ResponseEntity<ApiResponse> delete(@PathVariable final long id) {
+    final ApiResponse response = userService.delete(id);
+    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
   }
 }

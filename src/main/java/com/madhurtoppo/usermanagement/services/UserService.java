@@ -11,7 +11,7 @@ public interface UserService {
 
   public ApiResponse getAllUsers();
 
-  public String update(UserDto userDto, long id);
+  public ApiResponse update(UserDto userDto, long id);
 
-  public String delete(long id);
+  public ApiResponse delete(long id);
 }

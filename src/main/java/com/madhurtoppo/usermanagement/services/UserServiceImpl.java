@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public String update(final UserDto userDto, final long id) {
+  public ApiResponse update(final UserDto userDto, final long id) {
     if (userDto.name() == null || userDto.age() < 0 || userDto.city() == null) {
       throw new InvalidArgumentException();
     }
@@ -56,13 +56,13 @@ public class UserServiceImpl implements UserService {
     user.setAge(userDto.age());
     user.setCity(userDto.city());
     repository.save(user);
-    return "Successfully updated.";
+    return new ApiResponse(true, "User successfully updated");
   }
 
   @Override
-  public String delete(final long id) {
+  public ApiResponse delete(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     repository.delete(user);
-    return "Successfully deleted";
+    return new ApiResponse(true, "User successfully deleted");
   }
 }
