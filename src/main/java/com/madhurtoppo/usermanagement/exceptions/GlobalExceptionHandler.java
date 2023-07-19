@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<Error> userNotFound(
       final UserNotFoundException exception, final WebRequest request) {
 
-    final Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+    final Error error = new Error(false, exception.getMessage(), request.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
   }
 
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<Error> userAlreadyExists(
       final UserAlreadyExistsException exception, final WebRequest request) {
 
-    final Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+    final Error error = new Error(false, exception.getMessage(), request.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.OK);
   }
 
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<Error> invalidArguments(
       final InvalidArgumentException exception, final WebRequest request) {
 
-    final Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+    final Error error = new Error(false, exception.getMessage(), request.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.BAD_REQUEST);
   }
 
@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<Error> globalExceptions(
       final Exception exception, final WebRequest request) {
 
-    final Error error = new Error(exception.getMessage(), request.getDescription(false), new Date());
+    final Error error = new Error(false, exception.getMessage(), request.getDescription(false), new Date());
     return new ResponseEntity<Error>(error, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }
