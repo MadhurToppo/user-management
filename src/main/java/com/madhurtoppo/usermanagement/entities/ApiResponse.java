@@ -9,14 +9,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class ApiResponse {
 
-  private boolean status;
+  private boolean success;
   private String message;
 
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private Object data;
 
   public ApiResponse(boolean status, String message) {
-    this.status = status;
+    this.success = status;
     this.message = message;
   }
 }
