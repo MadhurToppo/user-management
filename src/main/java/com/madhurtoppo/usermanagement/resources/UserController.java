@@ -5,7 +5,9 @@ import com.madhurtoppo.usermanagement.dtos.UsersDto;
 import com.madhurtoppo.usermanagement.entities.ApiResponse;
 import com.madhurtoppo.usermanagement.services.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,9 @@ public class UserController {
   @PostMapping
   public ResponseEntity<ApiResponse> createUser(@RequestBody final UserDto userDto) {
     final ApiResponse response = userService.createUser(userDto);
-    return new ResponseEntity<ApiResponse>(response, HttpStatus.CREATED);
+    final HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.CREATED);
   }
 
   /**
@@ -40,7 +44,9 @@ public class UserController {
   @GetMapping
   public ResponseEntity<ApiResponse> getAllUsers() {
     final ApiResponse response = userService.getAllUsers();
-    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+    final HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -50,7 +56,9 @@ public class UserController {
   @GetMapping("/{id}")
   public ResponseEntity<ApiResponse> getUser(@PathVariable final Long id) {
     final ApiResponse response = userService.getUser(id);
-    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+    final HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -63,7 +71,9 @@ public class UserController {
       @RequestBody final UserDto userDto, @PathVariable final long id) {
 
     final ApiResponse response = userService.update(userDto, id);
-    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+    final HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -73,6 +83,8 @@ public class UserController {
   @DeleteMapping("/{id}")
   public ResponseEntity<ApiResponse> delete(@PathVariable final long id) {
     final ApiResponse response = userService.delete(id);
-    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+    final HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
   }
 }
