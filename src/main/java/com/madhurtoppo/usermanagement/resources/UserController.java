@@ -38,9 +38,9 @@ public class UserController {
    * @return List of {@link UsersDto}
    */
   @GetMapping
-  public ResponseEntity<UsersDto> getAllUsers() {
-    final UsersDto users = userService.getAllUsers();
-    return new ResponseEntity<UsersDto>(users, HttpStatus.OK);
+  public ResponseEntity<ApiResponse> getAllUsers() {
+    final ApiResponse response = userService.getAllUsers();
+    return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
   }
 
   /**
