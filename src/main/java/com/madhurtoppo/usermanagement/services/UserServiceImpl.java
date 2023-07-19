@@ -2,6 +2,7 @@ package com.madhurtoppo.usermanagement.services;
 
 import com.madhurtoppo.usermanagement.dtos.Mapper;
 import com.madhurtoppo.usermanagement.dtos.UserDto;
+import com.madhurtoppo.usermanagement.dtos.UserIdDto;
 import com.madhurtoppo.usermanagement.dtos.UsersDto;
 import com.madhurtoppo.usermanagement.entities.ApiResponse;
 import com.madhurtoppo.usermanagement.entities.User;
@@ -28,13 +29,14 @@ public class UserServiceImpl implements UserService {
     }
     final User user = mapper.toEntity(userDto);
     final User savedUser = repository.save(user);
-    return new ApiResponse(true, "User successfully Added", savedUser);
+    return new ApiResponse(true, "User successfully Added", new UserIdDto(savedUser.getId()));
   }
 
   @Override
   public ApiResponse getUser(final long id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
-    return new ApiResponse(true, "User found", user);
+    final UserDto userDto = mapper.toDto(user);
+    return new ApiResponse(true, "User found", userDto);
   }
 
   @Override
