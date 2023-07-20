@@ -16,15 +16,18 @@ gradle bootRun
 ```sh
 curl --verbose --request POST http://localhost:8080/api/users \
 --header 'Content-Type: application/json' \
---data '{"name":"Number 1","age":34, "city": "Mumbai"}' \
+--data '{"name":"John Doe","age":34, "city": "Berlin"}' \
 | json_pp | pygmentize -l json
 ```
 
 ### Get a User by Id
 
+Replace /users/uuid with newly generated uuid on user creation
+
 ```sh
-curl --verbose --request GET http://localhost:8080/api/users/1 \
-| json_pp | pygmentize -l json
+curl --verbose --request GET \
+http://localhost:8080/api/users/cb646756-ae61-4c6d-abe5-f7f13d7f8f85 | json_pp \
+| pygmentize -l json
 ```
 
 ### Get all Users
