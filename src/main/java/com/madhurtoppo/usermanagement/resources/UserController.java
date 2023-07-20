@@ -57,7 +57,7 @@ public class UserController {
    * @return {@link UserDto}
    */
   @GetMapping("/{id}")
-  public ResponseEntity<ApiResponse> getUser(@PathVariable final Long id) {
+  public ResponseEntity<ApiResponse> getUser(@PathVariable final String id) {
     final UserDto userDto = userService.getUser(id);
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -72,7 +72,7 @@ public class UserController {
    */
   @PutMapping("/{id}")
   public ResponseEntity<ApiResponse> update(
-      @RequestBody final UserDto userDto, @PathVariable final long id) {
+      @RequestBody final UserDto userDto, @PathVariable final String id) {
 
     userService.update(userDto, id);
     final HttpHeaders httpHeaders = new HttpHeaders();
@@ -86,7 +86,7 @@ public class UserController {
    * @return
    */
   @DeleteMapping("/{id}")
-  public ResponseEntity<ApiResponse> delete(@PathVariable final long id) {
+  public ResponseEntity<ApiResponse> delete(@PathVariable final String id) {
     userService.delete(id);
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);

@@ -8,11 +8,11 @@ import com.madhurtoppo.usermanagement.dtos.UsersDto;
 public interface UserService {
   public UserIdDto createUser(UserDto userDto);
 
-  public UserDto getUser(long id);
+  public UserDto getUser(String id);
 
   public UsersDto getAllUsers();
 
-  public void update(UserDto userDto, long id);
+  public void update(UserDto userDto, String id);
 
-  public void delete(long id);
+  public void delete(String id);
 }

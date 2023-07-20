@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public UserDto getUser(final long id) {
+  public UserDto getUser(final String id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     final UserDto userDto = mapper.toDto(user);
     return userDto;
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void update(final UserDto userDto, final long id) {
+  public void update(final UserDto userDto, final String id) {
     if (userDto.name() == null || userDto.age() < 0 || userDto.city() == null) {
       throw new InvalidArgumentException();
     }
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void delete(final long id) {
+  public void delete(final String id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     repository.delete(user);
   }

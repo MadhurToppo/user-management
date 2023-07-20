@@ -1,5 +1,5 @@
 package com.madhurtoppo.usermanagement.dtos;
 
 /** UserIdDto */
-public record UserIdDto(Long id) {
+public record UserIdDto(String id) {
 }
