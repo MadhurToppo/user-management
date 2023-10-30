@@ -37,7 +37,7 @@ public class UserController {
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
     final UserIdDto userIdDto = userService.createUser(userDto);
     final ApiResponse response = new ApiResponse(true, "User successfully added", userIdDto);
-    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.CREATED);
+    return new ResponseEntity<>(response, httpHeaders, HttpStatus.CREATED);
   }
 
   /**
@@ -49,7 +49,7 @@ public class UserController {
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
     final ApiResponse response = new ApiResponse(true, "All users found", usersDto);
-    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
+    return new ResponseEntity<>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -62,7 +62,7 @@ public class UserController {
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
     final ApiResponse response = new ApiResponse(true, "User found", userDto);
-    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
+    return new ResponseEntity<>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -78,7 +78,7 @@ public class UserController {
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
     final ApiResponse response = new ApiResponse(true, "User successfully updated");
-    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
+    return new ResponseEntity<>(response, httpHeaders, HttpStatus.OK);
   }
 
   /**
@@ -91,6 +91,6 @@ public class UserController {
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(MediaType.APPLICATION_JSON);
     final ApiResponse response = new ApiResponse(true, "User successfully deleted");
-    return new ResponseEntity<ApiResponse>(response, httpHeaders, HttpStatus.OK);
+    return new ResponseEntity<>(response, httpHeaders, HttpStatus.OK);
   }
 }
