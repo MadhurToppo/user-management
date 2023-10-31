@@ -1,3 +1,4 @@
+/* (C)2023 */
 package com.madhurtoppo.usermanagement.services;
 
 import com.madhurtoppo.usermanagement.dtos.Mapper;
@@ -8,7 +9,7 @@ import com.madhurtoppo.usermanagement.entities.User;
 import com.madhurtoppo.usermanagement.exceptions.InvalidArgumentException;
 import com.madhurtoppo.usermanagement.exceptions.UserAlreadyExistsException;
 import com.madhurtoppo.usermanagement.exceptions.UserNotFoundException;
-import com.madhurtoppo.usermanagement.repository.UserRepository;
+import com.madhurtoppo.usermanagement.repositories.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
