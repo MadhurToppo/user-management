@@ -1,4 +1,4 @@
-package com.madhurtoppo.usermanagement.resources;
+package com.madhurtoppo.usermanagement.controllers;
 
 import com.madhurtoppo.usermanagement.dtos.UserDto;
 import com.madhurtoppo.usermanagement.dtos.UserIdDto;

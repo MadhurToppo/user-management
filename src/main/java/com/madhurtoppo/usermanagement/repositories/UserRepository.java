@@ -1,4 +1,4 @@
-package com.madhurtoppo.usermanagement.repository;
+package com.madhurtoppo.usermanagement.repositories;
 
 import com.madhurtoppo.usermanagement.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
