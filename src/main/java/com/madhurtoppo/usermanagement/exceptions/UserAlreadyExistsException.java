@@ -3,7 +3,6 @@ package com.madhurtoppo.usermanagement.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-/** UserAlreadyExistsException */
 @ResponseStatus(HttpStatus.OK)
 public class UserAlreadyExistsException extends RuntimeException {
 
