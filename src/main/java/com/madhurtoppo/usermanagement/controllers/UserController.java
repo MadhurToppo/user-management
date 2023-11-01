@@ -4,6 +4,7 @@ import com.madhurtoppo.usermanagement.dtos.UserDto;
 import com.madhurtoppo.usermanagement.dtos.UserIdDto;
 import com.madhurtoppo.usermanagement.dtos.UsersDto;
 import com.madhurtoppo.usermanagement.entities.ApiResponse;
+import com.madhurtoppo.usermanagement.entities.User;
 import com.madhurtoppo.usermanagement.services.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +29,6 @@ public class UserController {
   private final UserServiceImpl userService;
 
   /**
-   * @param userDto
    * @return id of {@link User}
    */
   @PostMapping
@@ -53,7 +53,6 @@ public class UserController {
   }
 
   /**
-   * @param id
    * @return {@link UserDto}
    */
   @GetMapping("/{id}")
@@ -66,9 +65,7 @@ public class UserController {
   }
 
   /**
-   * @param userDto
-   * @param id
-   * @return
+   * @return message
    */
   @PutMapping("/{id}")
   public ResponseEntity<ApiResponse> update(
@@ -82,8 +79,7 @@ public class UserController {
   }
 
   /**
-   * @param id
-   * @return
+   * @return message
    */
   @DeleteMapping("/{id}")
   public ResponseEntity<ApiResponse> delete(@PathVariable final String id) {

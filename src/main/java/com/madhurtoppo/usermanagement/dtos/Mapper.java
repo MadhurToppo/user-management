@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public class Mapper {
 
   /**
-   * @param user
    * @return {@link UserDto}
    */
   public UserDto toDto(final User user) {
@@ -16,7 +15,6 @@ public class Mapper {
   }
 
   /**
-   * @param userDto
    * @return {@link User}
    */
   public User toEntity(final UserDto userDto) {

@@ -35,15 +35,13 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserDto getUser(final String id) {
     final User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
-    final UserDto userDto = mapper.toDto(user);
-    return userDto;
+    return mapper.toDto(user);
   }
 
   @Override
   public UsersDto getAllUsers() {
-    final List<UserDto> users = repository.findAll().stream().map(user -> mapper.toDto(user)).toList();
-    final UsersDto usersDto = new UsersDto(users);
-    return usersDto;
+    final List<UserDto> users = repository.findAll().stream().map(mapper::toDto).toList();
+    return new UsersDto(users);
   }
 
   @Override

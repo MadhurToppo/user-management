@@ -6,13 +6,13 @@ import com.madhurtoppo.usermanagement.dtos.UsersDto;
 
 /** UserService */
 public interface UserService {
-  public UserIdDto createUser(UserDto userDto);
+  UserIdDto createUser(UserDto userDto);
 
-  public UserDto getUser(String id);
+  UserDto getUser(String id);
 
-  public UsersDto getAllUsers();
+  UsersDto getAllUsers();
 
-  public void update(UserDto userDto, String id);
+  void update(UserDto userDto, String id);
 
-  public void delete(String id);
+  void delete(String id);
 }
